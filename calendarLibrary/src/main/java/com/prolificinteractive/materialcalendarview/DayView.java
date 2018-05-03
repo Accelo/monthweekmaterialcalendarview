@@ -57,7 +57,11 @@ class DayView extends CheckedTextView {
 
         setSelectionColor(this.selectionColor);
 
-        setGravity(Gravity.CENTER);
+        setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL);
+//        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//        layoutParams.topMargin = 30;
+//        setLayoutParams(layoutParams);
+        setPadding(0, 12, 0, 0);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             setTextAlignment(TEXT_ALIGNMENT_CENTER);

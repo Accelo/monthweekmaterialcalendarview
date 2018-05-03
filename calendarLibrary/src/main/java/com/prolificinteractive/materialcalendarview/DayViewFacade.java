@@ -3,8 +3,6 @@ package com.prolificinteractive.materialcalendarview;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 
-import com.prolificinteractive.materialcalendarview.spans.LunarSpan;
-
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,6 +18,7 @@ public class DayViewFacade {
     private Drawable selectionDrawable = null;
     private final LinkedList<Span> spans = new LinkedList<>();
     private boolean daysDisabled = false;
+    private CalendarDay mCalendarDay;
 
     DayViewFacade() {
         isDecorated = false;
@@ -69,10 +68,18 @@ public class DayViewFacade {
      * @param calendarDay
      */
     protected void addLunar(CalendarDay calendarDay) {
-        if (spans != null) {
-            LunarSpan span =new LunarSpan(calendarDay);
-            this.spans.add(new Span(span));
-        }
+        mCalendarDay = calendarDay;
+//        if (spans != null) {
+//            LunarSpan span =new LunarSpan(calendarDay);
+//            this.spans.add(new Span(span));
+//        }
+    }
+
+    public CalendarDay getCalendarDay() {
+        return mCalendarDay;
+    }
+    public void setCalendarDay(CalendarDay calendarDay) {
+        mCalendarDay = calendarDay;
     }
 
     /**

@@ -179,11 +179,17 @@ abstract class CalendarPagerView extends ViewGroup implements View.OnClickListen
         final DayViewFacade facadeAccumulator = new DayViewFacade();
         for (DayView dayView : dayViews) {
             facadeAccumulator.reset();
+            facadeAccumulator.setCalendarDay(dayView.getDate());
+
             for (DecoratorResult result : decoratorResults) {
+                result.result.setCalendarDay(dayView.getDate());
+                result.result.reset();
+                result.decorator.decorate(result.result);
                 if (result.decorator.shouldDecorate(dayView.getDate())) {
                     result.result.applyTo(facadeAccumulator);
                 }
             }
+
             if (Preference.showLunar) {
                 facadeAccumulator.addLunar(dayView.getDate());
             }
