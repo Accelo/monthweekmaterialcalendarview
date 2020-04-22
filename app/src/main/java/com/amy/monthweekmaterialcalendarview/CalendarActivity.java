@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.amy.monthweek.materialcalendarview.ILayoutManager;
 import com.amy.monthweek.materialcalendarview.MonthWeekMaterialCalendarView;
+import com.amy.monthweek.materialcalendarview.MonthWeekMaterialCalendarWithSwipeView;
 import com.amy.monthweekmaterialcalendarview.decorators.ColorDecorator;
 import com.amy.monthweekmaterialcalendarview.decorators.EnableOneToTenDecorator;
 import com.amy.monthweekmaterialcalendarview.decorators.EventDecorator;
@@ -40,7 +41,7 @@ import me.drakeet.multitype.MultiTypeAdapter;
 
 public class CalendarActivity extends AppCompatActivity {
     @BindView(R.id.slidelayout)
-    MonthWeekMaterialCalendarView monthWeekMaterialCalendarView;
+    MonthWeekMaterialCalendarWithSwipeView monthWeekMaterialCalendarView;
     @BindView(R.id.calendarView_week_mode)
     MaterialCalendarView calendarViewWeekMode;
     @BindView(R.id.calendarView_month_mode)
@@ -71,28 +72,28 @@ public class CalendarActivity extends AppCompatActivity {
         monthWeekMaterialCalendarView.setSelectedDate(selectedDate);
         //默认是月模式
         setMonthSelector();
-        monthWeekMaterialCalendarView.state().edit().setSlideModeChangeListener(new MonthWeekMaterialCalendarView.SlideModeChangeListener() {
+        monthWeekMaterialCalendarView.state().edit().setSlideModeChangeListener(new MonthWeekMaterialCalendarWithSwipeView.SlideModeChangeListener() {
             @Override
-            public void modeChange(MonthWeekMaterialCalendarView.Mode mode) {
-                if (mode.equals(MonthWeekMaterialCalendarView.Mode.MONTH)) {
+            public void modeChange(MonthWeekMaterialCalendarWithSwipeView.Mode mode) {
+                if (mode.equals(MonthWeekMaterialCalendarWithSwipeView.Mode.MONTH)) {
                     if (!_titlebar_month.isSelected()) {
                         setMonthSelector();
                     }
                 }
-                if (mode.equals(MonthWeekMaterialCalendarView.Mode.WEEK)) {
+                if (mode.equals(MonthWeekMaterialCalendarWithSwipeView.Mode.WEEK)) {
                     if (!_titlebar_week.isSelected()) {
                         setWeekSelector();
 
                     }
                 }
             }
-        }).setSlideDateSelectedlistener(new MonthWeekMaterialCalendarView.SlideDateSelectedlistener() {
+        }).setSlideDateSelectedlistener(new MonthWeekMaterialCalendarWithSwipeView.SlideDateSelectedlistener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
                 selectedDate = date;
                 _tv_selectdate.setText(new DateFormatTitleFormatter().format(selectedDate));
             }
-        }).setSlideOnMonthChangedListener(new MonthWeekMaterialCalendarView.SlideOnMonthChangedListener() {
+        }).setSlideOnMonthChangedListener(new MonthWeekMaterialCalendarWithSwipeView.SlideOnMonthChangedListener() {
             @Override
             public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
 
@@ -161,14 +162,14 @@ public class CalendarActivity extends AppCompatActivity {
     public void clickMonth() {
         if (!_titlebar_month.isSelected()&&!monthWeekMaterialCalendarView.isAnimatStart()) {
             setMonthSelector();
-            monthWeekMaterialCalendarView.setMode(MonthWeekMaterialCalendarView.Mode.MONTH);
+            monthWeekMaterialCalendarView.setMode(MonthWeekMaterialCalendarWithSwipeView.Mode.MONTH);
         }
     }
     @OnClick(R.id.titlebar_week)
     public void clickWeek() {
         if (!_titlebar_week.isSelected()&&!monthWeekMaterialCalendarView.isAnimatStart()) {
             setWeekSelector();
-            monthWeekMaterialCalendarView.setMode(MonthWeekMaterialCalendarView.Mode.WEEK);
+            monthWeekMaterialCalendarView.setMode(MonthWeekMaterialCalendarWithSwipeView.Mode.WEEK);
         }
     }
     @OnClick(R.id.tv_previous)
