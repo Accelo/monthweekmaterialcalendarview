@@ -155,6 +155,10 @@ public class MonthWeekMaterialCalendarWithSwipeView extends FrameLayout implemen
                 recyclerViewTop,
                 getMeasuredWidth(),
                 recyclerViewTop + getMeasuredHeight()-finalWeekModeHeight);
+        mRecyclerView.layout(0,
+                0,
+                getMeasuredWidth(),
+                getMeasuredHeight()-finalWeekModeHeight);
     }
     @Override
     protected void onRestoreInstanceState(Parcelable state) {
