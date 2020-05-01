@@ -31,9 +31,10 @@ import com.prolificinteractive.materialcalendarview.R;
 import java.util.Calendar;
 
 /**
- * Created by amy .
- * 整体页面布局是2个calendarView
- * 一个是日历视图mCalendarViewMonth ，日历视图切换为周模式的mCalendarViewWeek，
+ * Created by Yuri Popiv on 2020-04-22.
+ * This View is a copy of MonthWeekMaterialCalendarView with RecyclerView
+ * wrapped in SwipeRefreshLayout and updated layout measurement logic
+ * that makes swipe-to-refresh possible
  */
 public class MonthWeekMaterialCalendarWithSwipeView extends FrameLayout implements SlideMonthInterface {
     //月视图calendar的高度
@@ -151,10 +152,14 @@ public class MonthWeekMaterialCalendarWithSwipeView extends FrameLayout implemen
                 0,
                 mTopWeekView.getMeasuredWidth(),
                 mTopWeekView.getMeasuredHeight());
+        //Changed by Yuri to make swipe pull refresh possible
+        //Add SwipeRefreshLayout re-measurement when Calendar mode was changed
         mRefresh.layout(0,
                 recyclerViewTop,
                 getMeasuredWidth(),
                 recyclerViewTop + getMeasuredHeight()-finalWeekModeHeight);
+        //Changed by Yuri to make swipe pull refresh possible
+        //Updated RecyclerView size and position measurement
         mRecyclerView.layout(0,
                 0,
                 getMeasuredWidth(),
