@@ -527,7 +527,7 @@ public class MonthWeekMaterialCalendarView extends FrameLayout implements SlideM
 
             @Override
             public void onAnimationEnd(Animator animator) {
-//                mCalendarViewWeek.setVisibility(VISIBLE); //Don't show the calendar weekly view otherwise the calendar won't scroll to the selected date
+                mCalendarViewWeek.setVisibility(VISIBLE);
                 mCalendarViewMonth.clearAnimation();
                 //动画播放完毕说明已经滚动到了顶部
                 animatStart = false;
