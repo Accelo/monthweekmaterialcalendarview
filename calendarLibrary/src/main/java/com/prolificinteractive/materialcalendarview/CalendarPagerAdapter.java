@@ -249,11 +249,11 @@ abstract class CalendarPagerAdapter<V extends CalendarPagerView> extends PagerAd
         }
 
         if (min == null) {
-            min = CalendarDay.from(today.getYear() - 200, today.getMonth(), today.getDay());
+            min = CalendarDay.from(today.getYear() - 40, today.getMonth(), today.getDay());
         }
 
         if (max == null) {
-            max = CalendarDay.from(today.getYear() + 200, today.getMonth(), today.getDay());
+            max = CalendarDay.from(today.getYear() + 40, today.getMonth(), today.getDay());
         }
 
         rangeIndex = createRangeIndex(min, max);
