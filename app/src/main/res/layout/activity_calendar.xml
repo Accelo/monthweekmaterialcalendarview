@@ -103,7 +103,7 @@
     </LinearLayout>
 
 
-    <com.amy.monthweek.materialcalendarview.MonthWeekMaterialCalendarView
+    <com.amy.monthweek.materialcalendarview.MonthWeekMaterialCalendarWithSwipeView
         android:id="@+id/slidelayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -130,12 +130,19 @@
             app:mcv_showWeekView="false"
             app:mcv_showLunar="true" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <android.support.v4.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:orientation="vertical" />
+            android:layout_height="match_parent"
+            android:background="#000">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/cardview_dark_background"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+
 
 
         <LinearLayout
@@ -196,5 +203,5 @@
 
         </LinearLayout>
 
-    </com.amy.monthweek.materialcalendarview.MonthWeekMaterialCalendarView>
+    </com.amy.monthweek.materialcalendarview.MonthWeekMaterialCalendarWithSwipeView>
 </RelativeLayout>
